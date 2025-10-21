@@ -76,37 +76,84 @@ class Telemetry:
     def create(
         cls,
         connection: mavutil.mavfile,
-        args,  # Put your own arguments here
+        # Put your own arguments here
         local_logger: logger.Logger,
-    ):
+    ) -> "tuple[True, Telemetry] | tuple[False, None]":
         """
         Falliable create (instantiation) method to create a Telemetry object.
         """
-        pass  # Create a Telemetry object
+        if connection is None or local_logger is None:
+            return False, None
+        return True, cls(cls.__private_key, connection, local_logger)  # Create a Telemetry object
 
     def __init__(
         self,
         key: object,
         connection: mavutil.mavfile,
-        args,  # Put your own arguments here
+        # Put your own arguments here
         local_logger: logger.Logger,
     ) -> None:
         assert key is Telemetry.__private_key, "Use create() method"
 
         # Do any intializiation here
+        self.connection = connection
+        self._logger = local_logger
+        self.attitude_message = None
+        self.position_message = None
+        self._logger.info("telemetry.py initialized")
 
+    # gets telemetry messages from drone and returns it
     def run(
         self,
-        args,  # Put your own arguments here
-    ):
+    ) -> TelemetryData:
         """
         Receive LOCAL_POSITION_NED and ATTITUDE messages from the drone,
         combining them together to form a single TelemetryData object.
         """
-        # Read MAVLink message LOCAL_POSITION_NED (32)
-        # Read MAVLink message ATTITUDE (30)
-        # Return the most recent of both, and use the most recent message's timestamp
-        pass
+        starting_time = time.time()
+        timeout_period = 1
+
+        _position_msg = None
+        _attitude_msg = None
+
+        while time.time() - starting_time < timeout_period:
+            msg = self.connection.recv_match(
+                type=["LOCAL_POSITION_NED", "ATTITUDE"], blocking=False, timeout=0.1
+            )
+            if not msg:
+                continue
+            if msg.get_type() == "LOCAL_POSITION_NED":
+                _position_msg = msg
+            if msg.get_type() == "ATTITUDE":
+                _attitude_msg = msg
+
+            if _position_msg and _attitude_msg:
+                break
+        if _position_msg and _attitude_msg:
+            self.attitude_message = _attitude_msg
+            self.position_message = _position_msg
+            telemetry_data = TelemetryData(
+                # Read MAVLink message LOCAL_POSITION_NED (32)
+                # Read MAVLink message ATTITUDE (30)
+                # Return the most recent of both, and use the most recent message's timestamp
+                time_since_boot=max(
+                    self.position_message.time_boot_ms, self.attitude_message.time_boot_ms
+                ),  # ms
+                x=self.position_message.x,  # m
+                y=self.position_message.y,  # m
+                z=self.position_message.z,  # m
+                x_velocity=self.position_message.vx,  # m/s
+                y_velocity=self.position_message.vy,  # m/s
+                z_velocity=self.position_message.vz,  # m/s
+                roll=self.attitude_message.roll,  # rad
+                pitch=self.attitude_message.pitch,  # rad
+                yaw=self.attitude_message.yaw,  # rad
+                roll_speed=self.attitude_message.rollspeed,  # rad/s
+                pitch_speed=self.attitude_message.pitchspeed,  # rad/s
+                yaw_speed=self.attitude_message.yawspeed,  # rad/s
+            )
+            return telemetry_data
+        return None
 
 
 # =================================================================================================

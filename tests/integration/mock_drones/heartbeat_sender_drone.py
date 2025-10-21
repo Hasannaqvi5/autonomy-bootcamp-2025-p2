@@ -25,7 +25,7 @@ def main() -> int:
     # source_system = 1 (airside on drone)
     # source_component = 0 (autopilot)
     connection = mavutil.mavlink_connection(CONNECTION_STRING, source_system=1, source_component=0)
-
+    time.sleep(2)
     # Instantiate logger after main starts
     drone_name = pathlib.Path(__file__).stem
     process_id = os.getpid()
