@@ -213,6 +213,7 @@ def main() -> int:
     main_logger.info("Queues cleared")
 
     # Clean up worker processes
+    
 
     # We can reset controller in case we want to reuse it
     # Alternatively, create a new WorkerController instance
