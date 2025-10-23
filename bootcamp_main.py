@@ -209,17 +209,11 @@ def main() -> int:
 
     # Fill and drain queues from END TO START
     command_queue.fill_and_drain_queue()
-    heartbeat_queue.fill_and_drain_queue()
     telemetry_queue.fill_and_drain_queue()
     main_logger.info("Queues cleared")
 
     # Clean up worker processes
-    heartbeat_sender_manager.join_workers()
-    heartbeat_receiver_manager.join_workers()
-    telemetry_manager.join_workers()
-    command_manager.join_workers()
-
-    main_logger.info("Stopped")
+    
 
     # We can reset controller in case we want to reuse it
     # Alternatively, create a new WorkerController instance
