@@ -18,13 +18,17 @@ from ..common.modules.logger import logger
 # =================================================================================================
 def telemetry_worker(
     connection: mavutil.mavfile,
-    args,  # Place your own arguments here
+    output_queue: queue_proxy_wrapper.QueueProxyWrapper,
+    controller: worker_controller.WorkerController,
+    # Place your own arguments here
     # Add other necessary worker arguments here
 ) -> None:
     """
     Worker process.
 
-    args... describe what the arguments are
+    connection:connection instance
+    output_queue: output to other processes
+    controller: how main process communicates with worker process
     """
     # =============================================================================================
     #                          ↑ BOOTCAMPERS MODIFY ABOVE THIS COMMENT ↑
@@ -47,8 +51,31 @@ def telemetry_worker(
     #                          ↓ BOOTCAMPERS MODIFY BELOW THIS COMMENT ↓
     # =============================================================================================
     # Instantiate class object (telemetry.Telemetry)
+    # This creates an instance that will handle the actual MAVLink communication for telemetry
+    flag, telemetry_instance = telemetry.Telemetry.create(connection, local_logger)
+    if not flag:
+        local_logger.error("Failed to create Telemetry instance")
+        return
 
-    # Main loop: do work.
+    local_logger.info("Telemetry Worker Started")
+
+    # Main loop: continue running until the controller requests an exit
+    while not controller.is_exit_requested():
+        # Check if the process should be paused
+        controller.check_pause()
+
+        # Run the telemetry instance to fetch the latest data from the drone
+        data = telemetry_instance.run()
+
+        # If no data was received (e.g., due to timeout), skip this iteration
+        if not data:
+            continue
+
+        # Put the telemetry data into the output queue for the main process
+        output_queue.queue.put(data)
+        local_logger.info(f"Telemetry data: {data}")
+
+    local_logger.info("Telemetry Worker Stopped")
 
 
 # =================================================================================================

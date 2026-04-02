@@ -1,0 +1,28 @@
+20:46:39: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\modules\common\modules\logger\logger_main_setup.py | setup_main_logger | 62] main logger initialized
+20:46:40: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | main | 142] Connected!
+20:46:40: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGE_ALTITUDE: 1.00m
+20:46:41: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGE_ALTITUDE: -1.00m
+20:46:44: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: 63.43 degrees
+20:46:44: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: 90.00 degrees
+20:46:45: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: 116.57 degrees
+20:46:45: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: 45.00 degrees
+20:46:46: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: 63.43 degrees
+20:46:46: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: 90.00 degrees
+20:46:47: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: 26.57 degrees
+20:46:47: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: 45.00 degrees
+20:46:48: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: 90.00 degrees
+20:46:48: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: 45.00 degrees
+20:46:49: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: 90.00 degrees
+20:46:49: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: 135.00 degrees
+20:46:50: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: -26.57 degrees
+20:46:50: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: -45.00 degrees
+20:46:51: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: -90.00 degrees
+20:46:51: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: -45.00 degrees
+20:46:52: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: -90.00 degrees
+20:46:52: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: -135.00 degrees
+20:46:53: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: -63.43 degrees
+20:46:53: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: -90.00 degrees
+20:46:54: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: -116.57 degrees
+20:46:54: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: -45.00 degrees
+20:46:55: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: -63.43 degrees
+20:46:55: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\test_command.py | read_queue | 86] CHANGING_YAW: -90.00 degrees

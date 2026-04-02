@@ -1,0 +1,2 @@
+20:44:24: [INFO] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\mock_drones\heartbeat_sender_drone.py | main | 40] Logger initialized
+20:44:25: [ERROR] [C:\Users\Hasan\autonomy-bootcamp-2025-p2\tests\integration\mock_drones\heartbeat_sender_drone.py | main | 61] Drone: Most likely sent heartbeats too fast: measured period was 0.22734689712524414s
