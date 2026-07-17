@@ -123,7 +123,7 @@ class Command:  # pylint: disable=too-many-instance-attributes
         # If the yaw error is > 5 degrees, send MAV_CMD_CONDITION_YAW (115)
         if abs(yaw_angle) > 5:
             # direction: 1 for CW, -1 for CCW. MAVLink uses 1 for CW and -1 for CCW for relative yaw.
-            direction = 1 if yaw_angle > 0 else -1
+            direction = -1 if yaw_angle > 0 else 1
 
             self.connection.mav.command_long_send(
                 1,
